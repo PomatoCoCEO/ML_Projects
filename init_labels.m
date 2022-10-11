@@ -1,3 +1,0 @@
-function lbls =  init_labels(P)
-    % initialize labels for the test dataset
-    lbls=repmat([10 1:9], 1,5)';
