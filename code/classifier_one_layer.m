@@ -12,9 +12,9 @@ function net = classifier_one_layer(P,T, actFuncStr)
     sp = size(P);
     net.IW{1,1} = rand(st(1), sp(1)); % random weight initialization
     net.b{1,1} = rand(st(1), 1); % random bias initialization
-    net.trainParam.epochs = 1000;
+    net.trainParam.epochs = 100;
     net.trainParam.goal = 1e-6;
     net.trainParam.lr = 0.1; 
-    view(net);
+    %view(net);
     net = train(net, P,T);
 end

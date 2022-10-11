@@ -1,5 +1,5 @@
 function B = binary_transform(t)
-    a = max(t);
+    a = 10;
     [s, ~] = size(t);
     B = zeros(s,a);
     for i = 1:s

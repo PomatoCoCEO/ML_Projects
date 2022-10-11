@@ -5,7 +5,7 @@ function net = binary_perceptron_filter(P ,T)
     net.trainParam.goal = 1e-6; % Set the performance goal
     net.adaptFcn='learnp'; % Set the learning function
     net.performFcn='mse'; % Set the performance function
-    view(net)
+    %view(net)
     net=train(net,P,T); % Train the perceptron
     % num_inputs = 2;
     % num_outputs = 3;
