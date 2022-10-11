@@ -4,7 +4,7 @@ function f=associative_memory_filter(P,T)
     % load("P.mat");
     weights = T * pinv(P);
     % estimate = weights_assoc * P;
-
+    save("../data/AFW.mat", "weights");
     f = weights; 
     % returns the estimate associated to each digit that was drawn
     % the weights_assoc matrix was calculated with the pseudo_inverse method: W = T * pinv(P)
