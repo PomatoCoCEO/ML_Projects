@@ -27,9 +27,9 @@ function net = classifier_two_layers(P,T, actFuncStr,addSoftMax)
     net = configure(net, P, T);
     st = size(T);
     sp = size(P);
-    net.trainParam.epochs = 10;
+    net.trainParam.epochs = 100;
     net.trainParam.goal = 1e-6;
     net.trainParam.lr = 0.1;
-    view(net);
+    %view(net);
     net = train(net, P,T);
 end
