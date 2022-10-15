@@ -6,12 +6,13 @@ function net = classifier_one_layer(P,T, actFuncStr, addSoftMax)
     net.name="One Layer Classifier "+actFuncStr;
     st = size(T);
     net.adaptFcn = "learngd"; % gradient method by default
-    net.trainFcn = "trainr"; 
+    net.trainFcn = "trainr";
     if actFuncStr == "hardlim"
         if ~addSoftMax
             net.adaptFcn="learnp"; % perceptron weight and bias learning function
             net.trainFcn = "trainc";
         else
+            net.name="One Layer Classifier "+actFuncStr+" with Softmax";
             net.layers{1}.transferFcn = "softmax";
         end
     elseif addSoftMax
