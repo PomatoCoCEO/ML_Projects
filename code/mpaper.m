@@ -161,6 +161,8 @@ function Dn(varargin)
           
         case 'extend'  % middle  if click in the middle mouse button of in the combination hift+left button                   
           disp('----------- Classify -----------')
+
+          
          
           cells = getappdata( gcf, 'cells' );
           for r =  1:5
@@ -205,7 +207,7 @@ function Dn(varargin)
  % to save P; for that we must write
  
               save P.mat P
-           
+              Choose_classifier();
  % and a mat file called P is created having inside the matrix P.Then we can
  % load P, and rename the matrix P, by clicking on P with the right mouse
  % button and chose Rename.By this way we can create several matrices with
