@@ -28,7 +28,8 @@ function test_all(folderName)
             % 1 and layer classifier
             real_output = sim(net, test_input);
         end
-        fprintf("Classifier from %s after filter:\n" , net.name);
+        [c, cm, ind, per] = confusion(test_lbls_bin, real_output);
+        fprintf("Classifier from %s:\n" , net.name);
         fprintf("Accuracy: %f\n", (1-c));
         fprintf("Confusion matrix: \n");
         disp(cm);

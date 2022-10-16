@@ -1,5 +1,5 @@
 function net = classifier_two_layers(P,T, actFuncStr,addSoftMax)
-    trainFcn = "trainr";
+    trainFcn = "trainscg";
     adaptFunc = "learngd";
     if actFuncStr == "hardlim"
         trainFcn = "trainc";
@@ -18,15 +18,9 @@ function net = classifier_two_layers(P,T, actFuncStr,addSoftMax)
         net.layers{3}.transferFcn = 'softmax';
         net.layers{2}.transferFcn = "purelin";
     end
-    net = configure(net, P, T);
     net.layers{1}.transferFcn = actFuncStr;
-    net.adaptFcn = "learngd"; % gradient method by default
-    if actFuncStr == "hardlim"
-        net.adaptFcn="learnp"; % perceptron weight and bias learning function
-    end
+    net.trainParam.max_fail = 1000;
     net = configure(net, P, T);
-    st = size(T);
-    sp = size(P);
     net.trainParam.epochs = 1000;
     net.trainParam.goal = 1e-6;
     net.trainParam.lr = 0.1;
