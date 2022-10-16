@@ -15,6 +15,7 @@ function net = classifier_two_layers(P,T, actFuncStr,addSoftMax)
         net = feedforwardnet([hiddenLayerSize, 10], trainFcn);
         net.name="Two Layer Classifier "+actFuncStr+" with SoftMax";
         net.trainFcn = str;
+        net.adaptFcn = adaptFunc;
         net.layers{3}.transferFcn = 'softmax';
         net.layers{2}.transferFcn = "purelin";
     end

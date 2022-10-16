@@ -68,7 +68,7 @@ function train_all()
          save("../data/perceptron1C_"+act_funct_str+"_softmax.mat", "net");
     end
 
-    % classifier 2: no filtering; one layer
+    %classifier 2: no filtering; one layer
     for i = 1:length(act_funct_strs)
         act_funct_str = act_funct_strs{i};
         net = classifier_one_layer(P_total, labels_binary_total, act_funct_str, false); %! working
