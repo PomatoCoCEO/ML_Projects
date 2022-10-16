@@ -7,6 +7,7 @@ function train_all()
     load("../data/P.mat"); % load test data
     test_input=P;
     test_lbls = test_labels(); % load labels for test data
+    test_lbls_bin = binary_transform(test_lbls)';
     % test_input=P;
     %test_lbls = test_labels(); % load labels for test data
     %test_lbls = ones(size(test_lbls)); % depends on the 
@@ -18,10 +19,10 @@ function train_all()
     % disp("after assoc");
     output_filter = assoc * P_total;
     output_filter_test = assoc * test_input;
-    net = binary_perceptron_filter(P_total, target_filter); % train filter with the desired Arial output
+    % net = binary_perceptron_filter(P_total, target_filter); % train filter with the desired Arial output
     % disp("after perceptron");
-    save("../data/perceptron.mat", "net");
-    % load("../data/perceptron.mat");
+    % save("../data/perceptron.mat", "net");
+    load("../data/perceptron.mat");
     output_filter_perceptron = sim(net, P_total);
     output_filter_perceptron_test = sim(net, test_input);
     %! to be put in action again
@@ -32,16 +33,15 @@ function train_all()
          [c, cm, ind, per] = confusion(labels_binary_total, after_train);
          fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
          after_test = sim(net, output_filter_test);
-         [c, cm, ind, per] = confusion(test_lbls, after_test);
+         [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
          fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
          save("../data/1layer_C_"+act_funct_str+"_no_softmax.mat", "net");
-         disp("saved with the softmax");
          net = classifier_one_layer(output_filter, labels_binary_total, act_funct_strs{i}, false);
          after_train = sim(net, output_filter);
          [c, cm, ind, per] = confusion(labels_binary_total, after_train);
          fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
          after_test = sim(net, output_filter_test);
-         [c, cm, ind, per] = confusion(test_lbls, after_test);
+         [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
          fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
          save("../data/1layer_C_"+act_funct_str+"_softmax.mat", "net");
      end
@@ -55,16 +55,15 @@ function train_all()
          [c, cm, ind, per] = confusion(labels_binary_total, after_train);
          fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
          after_test = sim(net, output_filter_perceptron_test);
-         [c, cm, ind, per] = confusion(test_lbls, after_test);
+         [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
          fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
          save("../data/perceptron1C_"+act_funct_str+"_no_softmax.mat", "net");
-         disp("saved with the softmax");
          net = classifier_one_layer(output_filter_perceptron, labels_binary_total, act_funct_strs{i}, false);
          after_train = sim(net, output_filter_perceptron);
          [c, cm, ind, per] = confusion(labels_binary_total, after_train);
          fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
          after_test = sim(net, output_filter_perceptron_test);
-         [c, cm, ind, per] = confusion(test_lbls, after_test);
+         [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
          fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
          save("../data/perceptron1C_"+act_funct_str+"_softmax.mat", "net");
     end
@@ -78,7 +77,7 @@ function train_all()
         fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
         
         after_test = sim(net, test_input);
-        [c, cm, ind, per] = confusion(test_lbls, after_test);
+        [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
         fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
         
         save("../data/1layer_"+act_funct_str+"_no_softmax.mat", "net");
@@ -88,7 +87,7 @@ function train_all()
         fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
 
         after_test = sim(net, test_input);
-        [c, cm, ind, per] = confusion(test_lbls, after_test);
+        [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
         fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
 
         save("../data/1layer_"+act_funct_str+"_softmax.mat", "net");
@@ -102,7 +101,7 @@ function train_all()
         fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
 
         after_test = sim(net, test_input);
-        [c, cm, ind, per] = confusion(test_lbls, after_test);
+        [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
         fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
 
         save("../data/2layer_"+act_funct_str+"_no_softmax.mat", "net");
@@ -112,7 +111,7 @@ function train_all()
         fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
 
         after_test = sim(net, test_input);
-        [c, cm, ind, per] = confusion(test_lbls, after_test);
+        [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
         fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
 
         save("../data/2layer_"+act_funct_str+"_softmax.mat", "net");
@@ -123,7 +122,7 @@ function train_all()
      [c, cm, ind, per] = confusion(labels_binary_total, after_train);
      fprintf("%s Train Accuracy: %f\n",net.name, 1-c);
      after_test = sim(net, test_input);
-     [c, cm, ind, per] = confusion(test_lbls, after_test);
+     [c, cm, ind, per] = confusion(test_lbls_bin, after_test);
      fprintf("%s Test Accuracy: %f\n",net.name, 1-c);
      save("../data/pattern.mat", "net");
 end
