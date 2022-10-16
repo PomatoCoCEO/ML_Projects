@@ -1,5 +1,6 @@
-function C = my_classify(classifier_name, act_func)
+function C = my_classify(classifier_name, act_func, with_softmax)
     disp(act_func)
+    disp(with_softmax)
     if classifier_name == "AssMem"
         disp(1)
 
