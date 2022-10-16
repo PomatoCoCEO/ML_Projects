@@ -5,6 +5,11 @@ function test_all(folderName)
     test_input=P_test;
     test_lbls = test_labels(); % load labels for test data
     test_lbls_bin = binary_transform(test_lbls)';
+    
+    %load("../data/labels_bin_1000")
+    %test_lbls_bin = labels_bin_1000;
+    % used to test training
+    
     load("../data/"+folderName+"/AFW.mat"); % associative layer
     load("../data/"+folderName+"/perceptron.mat"); % associative layer
     perceptron = net;
