@@ -19,12 +19,15 @@ function net = classifier_two_layers(P,T, actFuncStr,addSoftMax)
         net.layers{3}.transferFcn = 'softmax';
         net.layers{2}.transferFcn = "purelin";
     end
+
     net.layers{1}.transferFcn = actFuncStr;
-    net.trainParam.max_fail = 1000;
+    
+
     net = configure(net, P, T);
+
     net.trainParam.epochs = 1000;
     net.trainParam.goal = 1e-6;
     net.trainParam.lr = 0.1;
-    view(net);
+    %view(net);
     net = train(net, P,T);
 end
