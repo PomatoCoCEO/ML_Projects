@@ -15,7 +15,7 @@ function binary_classif = make_classification(Trg)
             curr_class = val;
         end
     end
-    aid_array = [aid_array; [curr_class num_class]]
+    aid_array = [aid_array; [curr_class num_class]];
     sz_aid = size(aid_array);
     
     binary_classif = [];
