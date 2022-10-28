@@ -7,6 +7,6 @@ function net = lstm_network(P,T, numHiddenUnits)
         classificationLayer
     ];
 
-    options=trainingOptions ("sgdm","MaxEpochs",150, "Shuffle","never", "Verbose",false);
+    options=trainingOptions ("sgdm","MaxEpochs",150, "Shuffle","never", "Verbose",true,"ExecutionEnvironment","gpu");
     net = trainNetwork(P, T, layers, options);
 end
