@@ -6,7 +6,7 @@ function net = lstm_network(P,T, numHiddenUnits)
         softmaxLayer,
         classificationLayer
     ];
-
-    options=trainingOptions ("sgdm","MaxEpochs",150, "Shuffle","never", "Verbose",false);
+    options=trainingOptions ("sgdm","MaxEpochs",150, "Shuffle","never", "Verbose",true, "ExecutionEnvironment","gpu", ...
+            "MiniBatch", 1024);
     net = trainNetwork(P, T, layers, options);
 end
