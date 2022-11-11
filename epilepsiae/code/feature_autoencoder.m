@@ -1,5 +1,6 @@
 function stackednet = feature_autoencoder(P,T, hiddenLayerSizes)
-
+    % P is FeatVecSel transposed
+    % T is Classification scalar
     X = P;
     autoencs = [];
     for i = 1:length(hiddenLayerSizes)
@@ -12,9 +13,17 @@ function stackednet = feature_autoencoder(P,T, hiddenLayerSizes)
         autoencs = [autoencs autoenc];
         X = encode(autoenc,X);
     end
-
-    softnet = trainSoftmaxLayer(X,T,'MaxEpochs',100);
     
+    size(X)
+    size(T)
+
+    softnet = trainSoftmaxLayer(X,T,'LossFunction' , 'crossentropy');
+    
+    % to convert autoencs into an argument array
     autoencs = mat2cell(autoencs,1,ones(1,numel(autoencs)));
+
     stackednet = stack(autoencs{:}, softnet );
+
+
+    stackednet = train(stackednet, P, T);
 end

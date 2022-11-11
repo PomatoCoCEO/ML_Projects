@@ -1,6 +1,4 @@
 function C = my_classify(classifier_name, act_func, with_softmax)
-    disp(act_func)
-    disp(with_softmax)
     folderName = "nets_1000ep_1000in";
     load("../data/P.mat");
     test_input=P;
