@@ -27,15 +27,13 @@ function [images, classifs] = prepare_images(P, T)
             tot_size = tot_size + max(ct-no_features+1, 0);
         end
     end
-    fprintf("counts:");
-    disp(cts)
     sz = size(cts);
     images = [];
     classifs = [];
     cummulative = 1;
 
     % assembling the images
-    images = zeros(tot_size, no_features, no_features);
+    images = zeros(no_features, no_features, tot_size);
     classifs = zeros(tot_size, no_classes);
     pos = 1;
     for i = 1 : sz(1)
@@ -47,13 +45,11 @@ function [images, classifs] = prepare_images(P, T)
         end
         for j = 0 : ct - no_features
             arr = P(cummulative + j: cummulative + j+ no_features - 1,:);
-            images(pos,:,:) = arr;
+            images(:,:, pos) = arr;
             classifs(pos,:) = element;
             pos = pos + 1;
             % will return a 3d array with all the images 
         end
         cummulative = cummulative + ct;
     end
-    fprintf("pos = %d", pos)
-
 end
