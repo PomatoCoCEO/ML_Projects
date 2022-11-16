@@ -1,4 +1,4 @@
-function [images, classifs] = prepare_images(P, T)
+function [images, classif_images] = prepare_images(P, T)
     start = 1;
     end_pos = 29 + start;
     possible_poses = [];
@@ -52,4 +52,6 @@ function [images, classifs] = prepare_images(P, T)
         end
         cummulative = cummulative + ct;
     end
+    images = reshape(images, [size(images, 1:2), 1, size(images,3)]);
+    classif_images = classifs;
 end

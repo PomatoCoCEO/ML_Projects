@@ -1,9 +1,0 @@
-function ew = get_error_weights(categorical_target)
-    [~, GC] = groupcounts(categorical_target);
-    tot = numel(categorical_target);
-    ew = zeros(tot);
-    for i = 1 : tot
-        ew = tot / (GC(i));
-    end
-
-end
