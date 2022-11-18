@@ -1,5 +1,5 @@
 function stackednet = feature_autoencoder(P,T, hiddenLayerSizes)
-    % P is FeatVecSel transposed
+    % P is FeatVectSel transposed
     % T is Classification scalar
     X = P;
     autoencs = [];
