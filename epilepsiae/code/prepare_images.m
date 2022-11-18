@@ -37,7 +37,7 @@ function [images, classif_images] = prepare_images(P, T)
     classifs = zeros(tot_size, no_classes);
     pos = 1;
     for i = 1 : sz(1)
-        element = cts(i,1:no_classes);
+        element = cts(i,1:no_classes); % classification
         ct = cts(i,no_classes + 1);
         if ct < no_features
             cummulative = cummulative + ct;
