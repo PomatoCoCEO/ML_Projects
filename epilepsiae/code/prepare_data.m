@@ -1,7 +1,7 @@
 function [FeatVectSel, Trg , classif, classif_cat,  images, ...
         classif_images, cell_input] = prepare_data()
 
-    load("../data/44202.mat", "FeatVecSel", "Trg");
+    load("../data/44202.mat", "FeatVectSel", "Trg");
     % normal parametres
     classif = make_classification(Trg)';
     classif_cat = onehotdecode(classif, [1 2 3 4], 2);
