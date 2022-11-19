@@ -1,5 +1,4 @@
-function [FeatVectSel, Trg , classif, classif_cat,  images, ...
-        classif_images, cell_input] = prepare_data()
+function [FeatVectSel, Trg , classif, classif_cat,  images,  classif_images, cell_input] = prepare_data()
 
     load("../data/44202.mat", "FeatVectSel", "Trg");
     % normal parametres

@@ -1,4 +1,4 @@
-function stackednet = feature_autoencoder(P,T, hiddenLayerSizes)
+function [stackednet , X]= feature_autoencoder(P,T, hiddenLayerSizes)
     % P is FeatVectSel transposed
     % T is Classification scalar
     X = P;
@@ -16,6 +16,8 @@ function stackednet = feature_autoencoder(P,T, hiddenLayerSizes)
     
     size(X)
     size(T)
+
+    
 
     softnet = trainSoftmaxLayer(X,T,'LossFunction' , 'crossentropy');
     

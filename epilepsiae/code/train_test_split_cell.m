@@ -1,4 +1,4 @@
-function [dataTrain, dataTest, trgTrain, trgTest ] = train_test_split(data, trg, testProportion, shuffle)
+function [dataTrain, dataTest, trgTrain, trgTest ] = train_test_split_cell(data, trg, testProportion, shuffle)
     % data is a cell array, trg is a categorical array
     % sensitivity + specificity
     trainEndCoef = floor((1 - testProportion) * size(data,2));
