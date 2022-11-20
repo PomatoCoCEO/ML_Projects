@@ -34,10 +34,10 @@ function [images, classif_images] = prepare_images(P, T)
 
     % assembling the images
     images = zeros(no_features, no_features, tot_size);
-    classifs = zeros(tot_size, no_classes);
+    classifs = zeros(tot_size, 1);
     pos = 1;
     for i = 1 : sz(1)
-        element = cts(i,1:no_classes); % classification
+        element = onehotdecode(cts(i,1:no_classes), [1 2 3 4], 2);
         ct = cts(i,no_classes + 1);
         if ct < no_features
             cummulative = cummulative + ct;
@@ -53,5 +53,5 @@ function [images, classif_images] = prepare_images(P, T)
         cummulative = cummulative + ct;
     end
     images = reshape(images, [size(images, 1:2), 1, size(images,3)]);
-    classif_images = classifs;
+    classif_images = categorical(classifs);
 end

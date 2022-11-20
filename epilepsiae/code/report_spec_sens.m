@@ -7,7 +7,7 @@ function [sensitivity, specificity] =report_spec_sens(y_true, y_predicted, class
     false_positives = per(class_pos, 2);
     false_negatives = per(class_pos, 1);
     % no semicolon because printing is made easier
-    sensitivity = (true_positives)/(true_positives + false_negatives) 
-    specificity = true_negatives/(true_negatives + false_positives)
+    sensitivity = (true_positives)/(true_positives + false_negatives);
+    specificity = true_negatives/(true_negatives + false_positives);
     
 end

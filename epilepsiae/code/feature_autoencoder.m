@@ -28,4 +28,5 @@ function [stackednet , X]= feature_autoencoder(P,T, hiddenLayerSizes)
 
 
     stackednet = train(stackednet, P, T);
+    % to test clustering: [idx, C] = kmeans(data, no_categories);
 end
