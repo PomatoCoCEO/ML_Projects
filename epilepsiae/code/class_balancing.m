@@ -8,9 +8,9 @@ k = floor(size(idx,1)/ (1 - major_ratio));
 
 rp = randperm(n,floor(k* major_ratio));
 selected_ones = idx_1(rp,:);
-size(selected_ones)
+size(selected_ones);
 
-size(idx)
+size(idx);
 new_idx = [selected_ones; idx];
 new_idx = sort(new_idx);
 

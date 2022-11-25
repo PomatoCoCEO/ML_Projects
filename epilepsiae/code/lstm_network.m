@@ -1,10 +1,13 @@
-function net = lstm_network(P,T, numHiddenUnits)
+function net = lstm_network(P,T, numHiddenUnits, noFeatures, w)
+
+    % t is categorical
+    % p
     layers = [
-        sequenceInputLayer(29),
+        sequenceInputLayer(noFeatures),
         lstmLayer(numHiddenUnits, "OutputMode","last"),
         fullyConnectedLayer(4),
         softmaxLayer,
-        classificationLayer
+        classificationLayer(Classes = categorical([1,2,3,4]), ClassWeights= w)
     ];
     options=trainingOptions ("sgdm","MaxEpochs",150, "Shuffle","never", "Verbose",true, "ExecutionEnvironment","gpu", ...
             "MiniBatch", 1024);
