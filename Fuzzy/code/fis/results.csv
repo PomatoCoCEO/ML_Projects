@@ -1,2 +1,12 @@
 Clustering,Rules,Optimization,SSE
 FCM,3,Square,Backpropagation,0.0360097
+Subtractive,3,square,Hybrid,0.0212037
+Subtractive,3,sin,Hybrid,0.00261481
+Subtractive,3,sawtooth,Hybrid,0.00783091
+Subtractive,3,square,Backpropagation,0.0280667
+Subtractive,3,sin,Backpropagation,0.0110555
+Subtractive,3,sawtooth,Backpropagation,0.0140023
+Grid,64,square,Backpropagation,82.2343
+Grid,64,sin,Backpropagation,41.954
+Grid,64,sawtooth,Backpropagation,25.5466
+Grid,64,sin,Hybrid,0.00299705
