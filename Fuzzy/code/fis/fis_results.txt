@@ -1,0 +1,6 @@
+Clustering method: GridPartition; opt method: Backpropagation, no. of rules:64, sse: 30.679
+Clustering method: GridPartition; opt method: Hybrid, no. of rules:64, sse: 1.75525e-05
+Clustering method: SubtractiveClustering; opt method: Backpropagation, no. of rules:3, sse: 0.0114761
+Clustering method: SubtractiveClustering; opt method: Hybrid, no. of rules:3, sse: 2.74942e-09
+Clustering method: FCMClustering; opt method: Backpropagation, no. of rules:3, sse: 0.0176853
+Clustering method: FCMClustering; opt method: Hybrid, no. of rules:3, sse: 3.04868e-09
